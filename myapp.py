@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import sys
 import logging
 import time
+
 
 # Configure the logger
 logging.basicConfig(level=logging.DEBUG)
@@ -19,7 +22,8 @@ class MyApp:
 
         msg = """Let's play a game! Think of a number between 0 and 999, where no digit appears more than once.
 For example, '123' is OK, but '121' is not. Got it? Reverse the number (e.g., if you had "123" the reverse is "321"). 
-Now, calculate the difference between them. If you enter the last digit of that difference, I'll guess the other(s)."""
+Now, calculate the difference between them. If you enter the last digit of that difference, I'll guess the other(s).
+"""
         print(msg)
 
         try:
@@ -34,11 +38,11 @@ Now, calculate the difference between them. If you enter the last digit of that 
         """Run one loop iteration. Return True if we should keep going, or False to quit"""
 
         # Get the user input
-        n = input("{})".format(self.n_loops))
+        n = input("round {}) ".format(self.n_loops))
         self.n_loops += 1
 
         if not self.validate_input(n): return
-        n = int(n)
+        n = int(n) # make sure we're not a string
 
         # Ponder
         if self.ponder:
